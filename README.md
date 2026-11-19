@@ -1,4 +1,4 @@
-##Building an Observability Platform for a Microservices Application: A Hands-On Assignment from Zero to Implementation
+## Building an Observability Platform for a Microservices Application: A Hands-On Assignment from Zero to Implementation
 
 ## Introduction
 
