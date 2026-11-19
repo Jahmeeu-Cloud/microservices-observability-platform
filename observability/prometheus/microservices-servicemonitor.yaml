@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: microservices
+  namespace: microservices
+  labels:
+    release: observability
+spec:
+  namespaceSelector:
+    matchNames:
+      - microservices
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - api-gateway
+          - order-service
+          - payment-service
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

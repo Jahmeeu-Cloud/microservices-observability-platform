@@ -1,0 +1,42 @@
+
+flowchart TB
+    U[Customer / Client]
+
+    subgraph APP["Microservices Namespace"]
+        AG[API Gateway<br/>FastAPI]
+        OS[Order Service<br/>FastAPI]
+        PS[Payment Service<br/>FastAPI]
+    end
+
+    U -->|HTTP Requests| AG
+    AG -->|Create Order| OS
+    OS -->|Process Payment| PS
+
+    subgraph OBS["Observability Namespace"]
+        PROM[Prometheus]
+        GRAF[Grafana]
+        LOKI[Loki]
+        ALLOY[Grafana Alloy]
+        TEMPO[Tempo]
+        AM[Alertmanager]
+    end
+
+    AG -.->|Metrics| PROM
+    OS -.->|Metrics| PROM
+    PS -.->|Metrics| PROM
+
+    AG -.->|Structured Logs| ALLOY
+    OS -.->|Structured Logs| ALLOY
+    PS -.->|Structured Logs| ALLOY
+
+    ALLOY --> LOKI
+
+    AG -.->|OTLP Traces| TEMPO
+    OS -.->|OTLP Traces| TEMPO
+    PS -.->|OTLP Traces| TEMPO
+
+    PROM --> GRAF
+    LOKI --> GRAF
+    TEMPO --> GRAF
+    PROM --> AM
+    AM -->|Email Notifications| EMAIL[Email]
