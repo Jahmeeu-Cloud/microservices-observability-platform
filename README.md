@@ -2362,6 +2362,10 @@ helm list -n observability
 
 These commands are useful starting points when another engineer wants to inspect the running environment.
 
+
+
+
+
 ## 24. Conclusion
 
 Building this observability platform gave me an opportunity to connect several important areas of Cloud Engineering and DevOps in one practical assignment.
@@ -2375,6 +2379,12 @@ More importantly, I validated the components using actual application activity.
 I confirmed that the API Gateway could receive an order request, that the Order Service could communicate with the Payment Service, that Prometheus collected the application metrics, that Loki received the application logs and that Tempo captured traces involving all three services.
 
 I also learned that observability is not simply about collecting data. It is about making that data useful when someone needs to understand or troubleshoot an application.
+
+
+
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/hwty77aujy1n6l4avy7j.png)
+
+
 
 A dashboard should answer a question. An alert should identify a condition that needs attention. A log should provide useful context. A trace should help explain how a request travelled through the system. A runbook should help an engineer decide what to do next.
 
